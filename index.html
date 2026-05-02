@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/cart-icon-32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopNest — Find What You Love</title>
+    <!-- 
+      WHY Google Fonts here instead of CSS?
+      Loading fonts in index.html (before React mounts) prevents the 
+      "flash of unstyled text" (FOUT) — the jarring moment when text 
+      renders in a fallback font before the custom font loads.
+      Playfair Display = editorial serif for headings (luxury feel)
+      DM Sans = modern humanist sans for body (readable, warm)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

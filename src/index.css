@@ -1,0 +1,82 @@
+/* 
+  WHY are these @tailwind directives here?
+  Tailwind CSS works at build time — the Tailwind CLI (via PostCSS) reads your source files,
+  finds every class you've used (like "text-brand-500", "rounded-xl"), and generates ONLY 
+  those CSS rules. The three @tailwind directives tell it WHERE to inject:
+    - base:       CSS reset + default element styles
+    - components: Pre-built utility classes (if you use @layer components yourself)
+    - utilities:  All the utility classes (the core of Tailwind)
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Global base styles.
+  We use @layer base so Tailwind can tree-shake these if needed,
+  and so they have the correct specificity (lower than utility classes).
+*/
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "DM Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #1a1a1a;
+    background-color: #f9fafb;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+/* 
+  Custom utilities — things Tailwind doesn't have built-in.
+  @layer utilities ensures these have the same specificity as other utilities
+  and can be overridden with Tailwind modifiers like hover: or md:
+*/
+@layer utilities {
+  /* line-clamp-2 is now in Tailwind v3 core, but 1 and 3 are here for safety */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Custom scrollbar for the order summary item list */
+  .thin-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .thin-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  .thin-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .thin-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
