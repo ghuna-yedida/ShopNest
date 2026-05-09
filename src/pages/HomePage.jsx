@@ -246,7 +246,9 @@ function FilterBar({ sortBy, onSort, total, query }) {
         )}
       </p>
       <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-500 font-body">Sort:</span>
+        <span className="text-sm text-gray-500 font-body">
+          Sort By Category:
+        </span>
         <select
           value={sortBy}
           onChange={(e) => onSort(e.target.value)}
